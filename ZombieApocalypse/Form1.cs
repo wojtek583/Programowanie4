@@ -8,15 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-        //  Project not finished yet
-        //  Made by Wojciech Moc
-        //  April, 2020
-        //  https://github.com/wojtek583/Programowanie4 - Zombie Apocalypse
+//  Project not finished yet
+//  Made by Wojciech Moc
+//  April, 2020
+//  https://github.com/wojtek583/Programowanie4 - Zombie Apocalypse
+
+    //Dodac zatrzymywanie timera przy wcisnieciu na mapke
+    //Dodac informacje do messageboxow
+    //Zrobic losowe tworzenie ale bez powtorzen
+    //Dodac akcje po spotkaniu sie z zombie lub wojskiem przez czlowieka itd
+    //zrobic liczbe tur
+    //dodac skrzynie, jakie obiekty stale na mapce 
+    //moze dodac jakas grafike na tło, jakas trawka czy cos
 
 namespace ZombieApocalypse
 {
     public partial class Form1 : Form
     {
+        int people, soldiers, zombies;
+        int round = 0;
+        Random rnd = new Random();
+        ToolTip tp = new ToolTip();
         public Form1()
         {
             InitializeComponent();
@@ -24,15 +36,14 @@ namespace ZombieApocalypse
             this.Size = new System.Drawing.Size(495, 344);
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
+            label1.Text = "Set people";
+            label2.Text = "Set zombies";
+            label3.Text = "Set soldiers";
+
         }
 
-        int people, soldiers, zombies;
-        int round=0;
-        Random rnd = new Random();
-        ToolTip tp = new ToolTip();
         public void button1_Click(object sender, EventArgs e)
         {
-
             if (int.TryParse(textBox1.Text, out people) != true ||
                 int.TryParse(textBox2.Text, out soldiers) != true ||
                 int.TryParse(textBox3.Text, out zombies) != true ||
@@ -72,9 +83,11 @@ namespace ZombieApocalypse
                         Top = 12 + i * 10,
                         Left = 217 + j * 10,
                         Tag = (i, j),
-                        Margin=new Padding(1, 1, 1, 1),
+                        BackColor=Color.FromArgb(0,0,0),
                         Parent = this
                     };
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.FlatAppearance.BorderSize = 0;
                     Start(btn);
                     btn.Click += Form1_Click;
                 }
@@ -93,12 +106,12 @@ namespace ZombieApocalypse
                     coordY = b,
                     money = rnd.Next(0, 4000)
                 };
-                if ((c,d)==(a,b))
+                if ((c, d) == (a, b))
                 {
                     tp.SetToolTip(btn, "Human");
                     btn.BackColor = Color.Yellow;
                 }
-                
+
             }
             for (int i = 0; i < zombies; i++)
             {
@@ -107,8 +120,8 @@ namespace ZombieApocalypse
                 {
                     coordX = a,
                     coordY = b,
-                    rounds=10,
-                    strength=rnd.Next(1,20)
+                    rounds = 10,
+                    strength = rnd.Next(1, 20)
                 };
                 if ((c, d) == (a, b))
                 {
@@ -157,21 +170,21 @@ namespace ZombieApocalypse
         }
         private void Form1_Click(object sender, EventArgs e)
         {
-            var (a,b) = ((int,int))(sender as Control).Tag;
+            var (a, b) = ((int, int))(sender as Control).Tag;
             var color = (sender as Control).BackColor;
-            if (color==Color.Yellow)
+            if (color == Color.Yellow)
             {
-                MessageBox.Show("Human","Human");
-                
+                MessageBox.Show("Human", "Human");
+
             }
             if (color == Color.Green)
             {
-                MessageBox.Show("Zombie","Zombie");
+                MessageBox.Show("Zombie", "Zombie");
 
             }
             if (color == Color.Orange)
             {
-                MessageBox.Show("Soldier","Soldier");
+                MessageBox.Show("Soldier", "Soldier");
 
             }
         }
@@ -181,7 +194,13 @@ namespace ZombieApocalypse
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Thanks for playing!");
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Set people";
         }
 
         private void label5_Click(object sender, EventArgs e)
