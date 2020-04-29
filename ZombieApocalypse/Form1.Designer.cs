@@ -47,11 +47,11 @@
             this.btn1Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn1Exit.AutoSize = true;
             this.btn1Exit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn1Exit.Location = new System.Drawing.Point(413, 270);
+            this.btn1Exit.Location = new System.Drawing.Point(433, 270);
             this.btn1Exit.Name = "btn1Exit";
-            this.btn1Exit.Size = new System.Drawing.Size(54, 23);
+            this.btn1Exit.Size = new System.Drawing.Size(34, 23);
             this.btn1Exit.TabIndex = 5;
-            this.btn1Exit.Text = "Wyjście";
+            this.btn1Exit.Text = "Exit";
             this.btn1Exit.UseVisualStyleBackColor = true;
             this.btn1Exit.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -61,7 +61,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 26);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Rozpocznij grę!";
+            this.button1.Text = "Start Game";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
