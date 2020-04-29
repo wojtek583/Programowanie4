@@ -46,6 +46,7 @@ namespace ZombieApocalypse
                 textBox1.ReadOnly = true;
                 textBox2.ReadOnly = true;
                 textBox3.ReadOnly = true;
+                button1.Enabled = false;
                 label5.Text = $"People:\t  { textBox1.Text} \nSoldiers:\t { textBox2.Text} \nZombies:\t { textBox3.Text} \nRounds: {round}";
             }
 
@@ -71,7 +72,7 @@ namespace ZombieApocalypse
                         Top = 12 + i * 10,
                         Left = 217 + j * 10,
                         Tag = (i, j),
-                        Margin=new Padding(0, 0, 0, 0),
+                        Margin=new Padding(1, 1, 1, 1),
                         Parent = this
                     };
                     Start(btn);
